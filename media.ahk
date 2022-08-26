@@ -2,8 +2,8 @@
 ^!Left::Send   {Media_Prev} 		; Ctrl+Alt+Left
 ^!Right::Send  {Media_Next} 		; Ctrl+Alt+Right
 !Space::Send   {Media_Play_Pause} 	; Alt+Space
-!Up::Send {Volume_Up} 				; Alt+Up
-!Down::Send  {Volume_Down}			; Alt+Down
+; !Up::Send {Volume_Up} 				; Alt+Up
+; !Down::Send  {Volume_Down}			; Alt+Down
 !m::Send  {Volume_Mute}				; Alt+M
 
 ; Added functionality for media control using the mouse
@@ -30,10 +30,10 @@ CapsLock & Down::Send {Volume_Down}
 ^+A:: Winset, Alwaysontop, toggle, A
 
 ; Volume Up/Down when scrolling from tray
-#If MouseIsOver("ahk_class Shell_TrayWnd")
+#If MouseIsOver("ahk_class Shell_TrayWnd") || MouseIsOver("ahk_class Shell_SecondaryTrayWnd")
 WheelUp::Send {Volume_Up}
 WheelDown::Send {Volume_Down}
-~Xbutton1 & Xbutton2::Send	{Media_Play_Pause}
+Mbutton::Send	{Media_Play_Pause}
 
 MouseIsOver(WinTitle) {
     MouseGetPos,,, Win
